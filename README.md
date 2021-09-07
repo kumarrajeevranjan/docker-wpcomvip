@@ -14,6 +14,14 @@ VIP Go environment.
 2. Copy `sample.env` to `.env` and provide your project title, domain name (same as in step 1), database port (unique for every instance of this repo), and GitHub repo, which contains your VIP Go ready project.
 
 3. Run `./setup.sh`.
+3.1 (Optional) If you get "Permission denied" message in Step 3, you need to verify if your github profile is has the SSH key associated. If not, follow the steps below:
+    a. Navigate to ~/<username>/.ssh folder
+    b. run ssh-keygen -t rsa -C "<email-id>"
+    c. copy the contents of file id_rsa.pub
+    d. Go to github profile page and open SSH Keys section from the left menu
+    e. Give your key a name and paste the copied contents into the key filed and save
+    
+    Now, Run `./setup.sh` again.
 
 4. Run `docker-compose up -d`.
 
