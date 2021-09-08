@@ -4,18 +4,27 @@
 shopt -s nullglob
 shopt -s dotglob
 
+#for windows
+WORKDIR="$(pwd)"
+
 if [ ! -z "$(docker-compose ps | sed -e '/^\-\-\-/,$!d' -e '/^\-\-\-/d')" ]; then
   echo "Please run \`docker-compose down\` before running this script. (You will need"
   echo "to reimport content after this script completes.)"
   exit 1
 fi
 
-if [ ! -f .env ]; then
+#if [ ! -f .env ]; then ------commented
+
+#for windows
+if [ ! -f $WORKDIR/.env ]; then
   echo "Config file does not exist. Nothing to do."
   exit 1
 fi
 
-source .env
+#source .env ------commented
+
+#for windows
+source $WORKDIR/.env
 
 # include helpers
 . bin/helpers/render_template.sh
